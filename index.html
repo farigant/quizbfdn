@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Викторина Маленький тест для больших сердец</title>
+    <title>Маленький тест для больших сердец</title>
     <style>
         * {
             box-sizing: border-box;
@@ -39,11 +39,25 @@
             padding-bottom: 18px;
             margin-bottom: 24px;
         }
-        h1 small {
+        h1 .subtitle {
             font-size: 15px;
             font-weight: 400;
             color: #5a7a6a;
             margin-left: auto;
+        }
+        .description {
+            text-align: center;
+            font-size: 18px;
+            color: #1e3c2a;
+            background: #f0faf2;
+            padding: 16px 24px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            border: 2px dashed #28a745;
+            font-weight: 500;
+        }
+        .description .heart {
+            color: #e74c3c;
         }
         .progress-block {
             display: flex;
@@ -235,6 +249,12 @@
             border-top: 1px solid #d4edda;
             padding-top: 24px;
         }
+        .footer .tagline {
+            font-size: 16px;
+            font-weight: 600;
+            color: #28a745;
+            margin-bottom: 6px;
+        }
         .footer a {
             color: #28a745;
             text-decoration: none;
@@ -261,12 +281,25 @@
                 padding: 10px 20px;
                 font-size: 14px;
             }
+            .description {
+                font-size: 15px;
+                padding: 12px 16px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container" id="app">
-        <h1>🌿 Викторина <small>Путь к дому</small></h1>
+        <h1>
+            🌿 Маленький тест
+            <span class="subtitle">для больших сердец ❤️</span>
+        </h1>
+
+        <div class="description">
+            <span class="heart">❤️</span> Проверьте, как хорошо вы знаете мир бездомных животных.
+            Каждый правильный ответ — маленький шаг к большой помощи! <span class="heart">❤️</span>
+        </div>
+
         <div class="progress-block" id="progressBlock">
             <span id="questionCounter">Вопрос 1 / 50</span>
             <span>⭐ Баллы: <strong id="scoreDisplay">0</strong></span>
@@ -289,7 +322,11 @@
             <div class="message" id="finalMessage">Вы — настоящий друг животных!</div>
             <button class="btn btn-primary" onclick="restartQuiz()" style="margin-top:10px;">🔄 Пройти снова</button>
         </div>
-        <div class="footer">🌱 Знание — первый шаг к спасению. ❤️<br />Благотворительный фонд «Дарящие Надежду»</div>
+        <div class="footer">
+            <div class="tagline">🌱 Маленький тест для больших сердец</div>
+            Знание — первый шаг к спасению. ❤️<br />
+            Благотворительный фонд «Дарящие Надежду»
+        </div>
     </div>
 
     <script>
@@ -376,7 +413,6 @@
             roundLabel.textContent = q.roundLabel;
             roundHeader.textContent = 'РАУНД ' + q.round + ' · ' + q.roundLabel.toUpperCase();
 
-            // ВСТАВЛЯЕМ ЭМОДЗИ ПЕРЕД ВОПРОСОМ
             questionText.innerHTML = '<span class="emoji-big">' + q.emoji + '</span> ' + q.question;
 
             var letters = ['А', 'Б', 'В'];
@@ -469,7 +505,6 @@
         prevBtn.addEventListener('click', prevQuestion);
         nextBtn.addEventListener('click', nextQuestion);
 
-        // СТАРТ
         renderQuestion(0);
     </script>
 </body>
